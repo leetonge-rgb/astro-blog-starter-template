@@ -1,50 +1,122 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+// Replace these with your actual links and details
+const name = "Lee Tonge";
+const bio = "Welcome to my personal link hub.";
+const profileImageUrl = "/profile.jpg"; // Put your photo in public/profile.jpg
+
+const websiteUrl = "https://thecvstore.net"; 
+const linkedinUrl = "https://www.linkedin.com/in/your-profile-name/";
+const whatsappNumber = "447123456789"; // Include country code, no + or spaces
 ---
 
-<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{name}</title>
+  </head>
+  <body>
+    <main class="card">
+      <img src={profileImageUrl} alt={name} class="avatar" />
+      <h1>{name}</h1>
+      <p>{bio}</p>
+
+      <div class="links">
+        <a href={websiteUrl} target="_blank" rel="noopener" class="btn">
+          🌐 Visit My Website
+        </a>
+
+        <a href={linkedinUrl} target="_blank" rel="noopener" class="btn linkedin">
+          💼 Connect on LinkedIn
+        </a>
+
+        <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener" class="btn whatsapp">
+          💬 Chat on WhatsApp
+        </a>
+      </div>
+    </main>
+
+    <style>
+      :root {
+        --bg-color: #f4f4f7;
+        --card-bg: #ffffff;
+        --text-color: #1a1a1a;
+        --btn-bg: #2d3748;
+        --btn-text: #ffffff;
+      }
+
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: var(--bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .card {
+        background: var(--card-bg);
+        padding: 40px 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        text-align: center;
+        max-width: 380px;
+        width: 100%;
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border: 4px solid var(--bg-color);
+      }
+
+      h1 {
+        margin: 0 0 5px 0;
+        font-size: 1.6rem;
+        color: var(--text-color);
+      }
+
+      p {
+        margin: 0 0 25px 0;
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn {
+        display: block;
+        padding: 14px 20px;
+        background: var(--btn-bg);
+        color: var(--btn-text);
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: transform 0.15s ease, opacity 0.15s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.95;
+      }
+
+      .btn.linkedin {
+        background: #0a66c2;
+      }
+
+      .btn.whatsapp {
+        background: #25d366;
+      }
+    </style>
+  </body>
 </html>
